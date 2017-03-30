@@ -23,50 +23,28 @@ from __future__ import print_function, division
 from lxml import html
 import csv, sys
 from itertools import izip_longest
-# import itertools
 from os.path import join, dirname, realpath
-# from pandas import Series, DataFrame
 import pandas as pd
 from os import path
 from datetime import date
-# import fileinput
 import os
-# import numpy
 import time 
-# from shutil import copyfile
-# from selenium import webdriver
 import time, os, re, codecs, math, random, csv, datetime
-# from selenium.webdriver.common import action_chains, keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-# import smtplib
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
-# from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
-# from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import sys
 import uuid
 
 general_path = "E:\Grubhub_MW\Grubhub_Scrapes"
 
-# insta = os.path.join(path, "Instacart")
 
 delay = 15
 
-# list_of_zips = os.path.join(path, "zip_list.csv")
 
-# done_zips_name = os.path.join(path, "done_zips.csv")
-# done_list_name = os.path.join(path, "done_list.csv")
-
-# user_agent_list = os.path.join(path, "user_agents.csv")
-
-# email_address = 'sarah-smith@coe.edu'
-# password_text = 'InstaCart'
-
-# email_address = 'john-smith@coe.edu'
-# password_text = 'InstaCart'
 
 def get_done_lists(area, scrape_name):
 
@@ -165,11 +143,7 @@ def search_for_restaurants(driver, zip):
 			
 	
 	try:
-		# WebDriverWait(driver, delay).until(
-			# EC.presence_of_element_located(
-			# (By.CLASS_NAME, 'facetContainer-titleClear')
-			# ))
-		# driver.find_element_by_class_name('facetContainer-titleClear').click()
+			# driver.find_element_by_class_name('facetContainer-titleClear').click()
 		WebDriverWait(driver, delay).until(
 			EC.presence_of_element_located(
 			(By.CLASS_NAME, 'icon-close')
@@ -181,17 +155,7 @@ def search_for_restaurants(driver, zip):
 			(By.CLASS_NAME, "restaurantCard-primaryInfo-item")
 			))
 		print("found it")
-		
-		# driver.find_element_by_xpath('//*[@class="type-secondary ghs-clearAllBtn"]').click()
-		
-		# # try:
-			# # exit_open_now = driver.find_element_by_xpath('//*[@ng-bind-html="facet.value"]').click()
-			# exit_open_now.click()
-		# # except:
-			# print("trying again")
-			# # time.sleep(3)
-			# exit_open_now = driver.find_element_by_xpath('//*[@ng-bind-html="facet.value"]')
-			# exit_open_now.click()
+
 		
 		WebDriverWait(driver, delay).until(
 			EC.presence_of_element_located(
@@ -213,7 +177,7 @@ def search_for_restaurants(driver, zip):
 
 def get_list(driver):
 
-	# current_page = int(driver.find_element_by_xpath('//*[@ng-bind="searchCon.searchData.currentPage"]').text)
+
 	current_page = 1
 	try:
 		WebDriverWait(driver, delay).until(
@@ -357,8 +321,7 @@ def download_menu_info(driver, url, zip),path, area:
 	
 	visible_text = driver.find_element_by_xpath('.//html[@id]').text
 	visible_text = visible_text.encode('utf-8').strip()
-	# if "An error occurred" in visible_text: # check to make sure connected to internet 
-		# sys.exit()
+
 	visible_text_file.write(visible_text)
 	visible_text_file.close()
 	print("wrote visible text")
@@ -440,10 +403,6 @@ def main(area, scrape_name):
 				print("")
 			main_page = driver.find_element_by_class_name('mainNavBrand-logo').click()
 			
-			# WebDriverWait(driver, delay).until(
-				# EC.presence_of_element_located(
-				# (By.XPATH, '//*[@type="search"]')
-				# ))
 				
 		print("ALL DONE!!!!")
 		
